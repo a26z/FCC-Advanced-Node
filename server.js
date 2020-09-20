@@ -4,7 +4,6 @@ const express = require("express");
 const myDB = require('./connection');
 const fccTesting = require("./freeCodeCamp/fcctesting.js");
 const pug = require('pug');
-
 const app = express();
 
 app.set('view engine', 'pug');
@@ -16,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.route("/").get((req, res) => {
   //Change the response to render the Pug template
-  res.render('pug/index');
+  res.render(process.cwd() + '/views/pug/index', {title: "Hello", message: "Please login"});
 });
 
 app.listen(process.env.PORT || 3000, () => {
