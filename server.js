@@ -40,9 +40,9 @@ myDB(async function(client) {
         done(null, user._id)
     });
     passport.deserializeUser(function(id, done) {
-        // myDataBase.findOne({_id, new ObjectID(id)}, function(err, doc){
-        done(null, null);
-        // });
+        myDataBase.findOne({_id: new ObjectID(id)}, function(err, doc){
+        done(null, doc);
+        });
     });
 }).catch(function(e) {
     app.route('/').get(function(req, res) {
